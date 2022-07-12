@@ -6,7 +6,11 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import http from '@/http'
+
 Vue.config.productionTip = false
+
+Vue.prototype.$http = http
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

@@ -7,23 +7,23 @@
       <div class="col-8 coluna-login">
         <h2 class="text-center mb-5 title-login">Login</h2>
         <b-form @submit.prevent="enviar">
-          <b-form-group label="Email" label-for="Email" class="mb-2">
+          <b-form-group label="Email" label-for="Email" class="mb-2 textos">
             <b-form-input
               placeholder="Digite seu Email"
               class="input shadow-none"
               type="email"
               required
-              
+              v-model="usuario.email"
             >
             </b-form-input>
           </b-form-group>
-          <b-form-group label="Senha" label-for="Senha" class="mb-3">
+          <b-form-group label="Senha" label-for="Senha" class="mb-3 textos">
             <b-form-input
               placeholder="Digite sua Senha"
               class="input shadow-none"
               type="password"
               required
-              
+              v-model="usuario.password"
             >
             </b-form-input>
           </b-form-group>
@@ -39,9 +39,27 @@
   </b-row>
 </template>
 <script>
-
 export default{
-     
+     data() {
+    return {
+      usuario: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    enviar() {
+      this.$http
+        .post("/login", this.usuario)
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("token", response.data.access_token);
+          this.$router.push({ name: "home" });
+        })
+        .catch((erro) => console.log(erro));
+    },
+  },
 }
 </script>
 <style scoped>
@@ -80,5 +98,9 @@ export default{
 
 .btn-enviar{
   background-color: #6C63FF;
+}
+
+.textos{
+    text-align: left;
 }
 </style>

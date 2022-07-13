@@ -28,6 +28,11 @@ const routes = [
         name: 'tabela',
         component: () => import('../views/tabela/users.vue')
       },
+      {
+        path: '/home/cadastro',
+        name: 'cadastrar',
+        component: () => import('../views/cadastrar/cadastro.vue')
+      },
     ]
   },
 ]

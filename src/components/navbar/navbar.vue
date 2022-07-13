@@ -7,7 +7,7 @@
         </nav>
         <div class="d-flex align-items-center">
           <b-nav-item to="inicio">home</b-nav-item>
-          <b-nav-item>cadastrar</b-nav-item>
+          <b-nav-item to="/home/cadastro">cadastrar</b-nav-item>
           <b-nav-item to="tabela">usuários</b-nav-item>
           <b-nav-item-dropdown right>
             <template #button-content>

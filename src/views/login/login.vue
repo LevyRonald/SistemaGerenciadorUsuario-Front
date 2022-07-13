@@ -77,7 +77,7 @@ export default{
 }
  
 .left-login {
-  background-color: #f2f2f2;
+  background-color: #CAD5CA;
 }
  
 .title-login {
@@ -103,4 +103,5 @@ export default{
 .textos{
     text-align: left;
 }
+
 </style>

@@ -1,50 +1,75 @@
 <template>
   <div class="container">
     <b-card no-body class="mb-2 cardPrin">
-    <div class="m-2">
-      <b-row>
-        <b-col
-          cols="12"
-          md="6"
-          class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
-        >
-          <div class="d-flex flex-column">
-            <div class="d-flex align-items-center">
-              <b-icon icon="people-fill" aria-hidden="true"></b-icon>
-              <strong>Usuários</strong>
-            </div>
-          </div>
-        </b-col>
-        <b-col cols="12" md="6">
-          <div
-            class="d-flex align-items-center justify-content-end pt-3 pesquisar"
+      <div class="m-2">
+        <b-row>
+          <b-col
+            cols="12"
+            md="6"
+            class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
           >
-            <b-form-input
-              v-model="filter"
-              class="d-inline-block mr-1 h-75 w-50"
-              placeholder="Pesquisar..."
-            />
-          </div>
-        </b-col>
-      </b-row>
-    </div>
-    <div class="row">
-      <Tabela v-for="user in users" :key="user.numero" :user="user" />
-    </div>
-    <b-table
-      fixed
-      striped
-      hover
-      responsive
-      :items="users"
-      :fields="column"
-      :filter="filter"
-      :filter-included-fields="filterOn"
-      @filtered="onFiltered"
-      show-empty
-    >
-      <template #cell(name)="data">{{ data.value }}</template>
-    </b-table>
+            <div class="d-flex flex-column">
+              <div class="d-flex align-items-center">
+                <b-icon icon="people-fill" aria-hidden="true"></b-icon>
+                <strong>Usuários</strong>
+              </div>
+            </div>
+          </b-col>
+          <b-col cols="12" md="6">
+            <div
+              class="
+                d-flex
+                align-items-center
+                justify-content-end
+                pt-3
+                pesquisar
+              "
+            >
+              <b-form-input
+                v-model="filter"
+                class="d-inline-block mr-1 h-75 w-50"
+                placeholder="Pesquisar..."
+              />
+            </div>
+          </b-col>
+        </b-row>
+      </div>
+      <div class="row">
+        <Tabela v-for="user in users" :key="user.numero" :user="user" />
+      </div>
+      <b-table
+        fixed
+        striped
+        hover
+        responsive
+        :items="users"
+        :fields="column"
+        :filter="filter"
+        :filter-included-fields="filterOn"
+        @filtered="onFiltered"
+         :per-page="perPage"
+        :current-page="currentPage"
+        show-empty
+      >
+        <template #cell(name)="data">{{ data.value }}</template>
+      </b-table>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="totalRows"
+        :per-page="perPage"
+        first-number
+        last-number
+        class="mb-0 mt-1 mt-sm-0"
+        prev-class="prev-item"
+        next-class="next-item"
+      >
+        <template #prev-text>
+          <b-icon-arrow-left-circle/>
+        </template>
+        <template #next-text>
+          <b-icon-arrow-right-circle/>
+        </template>
+      </b-pagination>
     </b-card>
   </div>
 </template>
@@ -55,14 +80,16 @@ import navbar from "@/components/navbar/navbar.vue";
 export default {
   components: {
     Tabela,
-    navbar
+    navbar,
   },
   data() {
     return {
       users: [],
+      perPage: 5,
+      pageOptions: [3, 5, 10],
       totalRows: 1,
       currentPage: 1,
-      sortBy: '',
+      sortBy: "",
       filter: null,
       filterOn: [],
       column: [
@@ -85,14 +112,14 @@ export default {
   },
   methods: {
     onFiltered(filteredItems) {
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     },
-  }
+  },
 };
 </script>
 <style scoped>
-.cardPrin{
-  background-color: #CAD5CA;
+.cardPrin {
+  background-color: #cad5ca;
 }
 </style>

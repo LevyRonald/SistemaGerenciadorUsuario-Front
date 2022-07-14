@@ -36,7 +36,7 @@
           </b-form-group>
           <div class="d-flex justify-content-between">
             <b-button type="submit" class="btn-enviar">
-              <b-icon-door-open />cadastrar
+              cadastrar
             </b-button>
             <b-button type="reset" variant="danger">Limpar</b-button>
           </div>

@@ -2,7 +2,7 @@
     <b-row class="vh-100 vw-100">
     <b-col
       sm="5"
-      class="d-flex justify-content-center align-items-center left-login"
+      class="d-flex justify-content-center align-items-center left-login" v-dark-mode
     >
       <div class="col-8 coluna-login">
         <h2 class="text-center mb-5 title-login">Login</h2>
@@ -12,6 +12,7 @@
               placeholder="Digite seu Email"
               class="input shadow-none"
               type="email"
+              v-dark-mode
               required
               v-model="usuario.email"
             >
@@ -23,6 +24,7 @@
               class="input shadow-none"
               type="password"
               required
+              v-dark-mode
               v-model="usuario.password"
             >
             </b-form-input>
@@ -50,14 +52,8 @@ export default{
   },
   methods: {
     enviar() {
-      this.$http
-        .post("/login", this.usuario)
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.access_token);
-          this.$router.push({ name: "home" });
-        })
-        .catch((erro) => console.log(erro));
+      this.$store.dispatch('efetuarLogin', this.usuario)
+      .then(() => this.$router.push({ name: 'home'}))
     },
   },
 }
@@ -78,6 +74,10 @@ export default{
  
 .left-login {
   background-color: #CAD5CA;
+}
+
+.left-login.theme--dark{
+  background-color: #313336;
 }
  
 .title-login {
@@ -102,6 +102,12 @@ export default{
 
 .textos{
     text-align: left;
+}
+
+.input.theme--dark{
+  background-color: #17181a;
+  color: white;
+  border-color: #4a4d53;
 }
 
 </style>

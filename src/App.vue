@@ -18,6 +18,12 @@
 #app.theme--dark {
   color: white;
 }
+
+input.theme--dark {
+  background-color: #17181a;
+  color: white;
+  border-color: #4a4d53;
+}
 body.theme--dark {
   background-color: #0d1117;
 }

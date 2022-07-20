@@ -8,20 +8,14 @@
 </template>
 <script>
 import navbar from "@/components/navbar/navbar.vue";
-import users from "@/views/tabela/users.vue";
-import inicio from "@/components/inicio/inicio.vue"
-
 export default {
   components: {
-    navbar,
-    users,
-    inicio
+    navbar
   },
 };
 </script>
 <style scoped>
 .fundo {
-  background-color: #5b635b8f;
   height: 100vh;
 }
 </style>

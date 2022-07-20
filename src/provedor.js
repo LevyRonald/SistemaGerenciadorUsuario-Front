@@ -37,7 +37,21 @@ const actions = {
                     reject(err)
                 })
         })
-    }
+    },
+      fetchUser(ctx, { id }) {
+        return new Promise((resolve, reject) => {
+          http.get(`/users/${id}`)
+            .then(response => resolve(response))
+            .catch(error => reject(error))
+        })
+      },
+      UpdateUser(ctx, { id }) {
+        return new Promise((resolve, reject) => {
+          http.patch(`/users/${id}`)
+            .then(response => resolve(response))
+            .catch(error => reject(error))
+        })
+      },
 }
 export default new Vuex.Store({
     state: estado,  

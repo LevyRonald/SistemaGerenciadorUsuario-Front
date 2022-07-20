@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="cardPrin">
+  <b-card no-body class="cardPrin shadow" v-dark-mode>
     <b-col class="w-100 d-flex align-items-center justify-content-center">
       <div>
         <h2 class="text-center mb-5 title-login">Cadastrar Usuário</h2>
@@ -10,6 +10,7 @@
               class="input shadow-none"
               type="text"
               required
+              v-dark-mode
               v-model="usuariosCadastrados.name"
             >
             </b-form-input>
@@ -20,6 +21,7 @@
               class="input shadow-none"
               type="email"
               required
+              v-dark-mode
               v-model="usuariosCadastrados.email"
             >
             </b-form-input>
@@ -30,6 +32,7 @@
               class="input shadow-none"
               type="password"
               required
+              v-dark-mode
               v-model="usuariosCadastrados.password"
             >
             </b-form-input>
@@ -71,12 +74,19 @@ export default {
 </script>
 <style scoped>
 .cardPrin {
-  background-color: #cad5ca;
   width: 50%;
   border-radius: 20px;
   padding: 20px;
 }
+.cardPrin.theme--dark{
+  background-color: #313336;
+}
 .btn-enviar {
   background-color: #6c63ff;
+}
+.input.theme--dark{
+  background-color: #17181a;
+  color: white;
+  border-color: #4a4d53;
 }
 </style>

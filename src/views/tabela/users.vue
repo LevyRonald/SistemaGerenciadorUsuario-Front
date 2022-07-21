@@ -48,7 +48,7 @@
         :filter="filter"
         :filter-included-fields="filterOn"
         @filtered="onFiltered"
-        sticky-header="470px"
+        sticky-header="460px"
         no-border-collapse
         show-empty
       >

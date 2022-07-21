@@ -65,45 +65,36 @@
               <b-icon icon="box-arrow-up-right" scale="0.6"></b-icon>
               <label for="">Editar</label>
             </b-dropdown-item>
-            <b-dropdown-item>
+            <b-dropdown-item @click="getUsers(item)">
               <b-icon icon="trash" scale="0.6"></b-icon>
               <label for="">Excluir</label>
             </b-dropdown-item>
           </b-dropdown>
         </template>
       </b-table>
-      <b-modal
-        id="modal-center"
-        title="Editar usuário"
-        ok-title="Atualizar"
-        cancel-variant="outline-secondary"
-        cancel-title="fechar"
-        centered
-        :header-bg-variant="switchModal"
-        :body-bg-variant="switchModal"
-        :footer-bg-variant="switchModal"
-        content-class="shadow"
-      >
-        <b-form @submit.prevent="update">
-          <b-form-group label="Nome" label-for="Nome">
-            <b-form-input class="input shadow-none"  v-model="editable.name" v-dark-mode></b-form-input>
-          </b-form-group>
-          <b-form-group label="Email" label-for="Email  ">
-            <b-form-input class="input shadow-none" type="email"  v-model="editable.email"  v-dark-mode></b-form-input>
-          </b-form-group>
-          <b-form-group label="Senha" label-for="Senha">
-            <b-form-input class="input shadow-none" type="password" v-model="editable.password"  v-dark-mode></b-form-input>
-          </b-form-group>
-          <b-button type="submit">atualizar</b-button>
-        </b-form>
-      </b-modal>
     </b-card>
+    <b-modal
+      size="sm"
+      id="modal-1"
+      title="Confirme essa ação"
+      ref="my-modal"
+      :header-bg-variant="switchModal"
+      :body-bg-variant="switchModal"
+      hide-footer
+      centered
+      hide-header-close
+    >
+      <p class="my-4">Deseja realmente deletar este usuário?</p>
+      <div class="w-75 d-flex justify-content-between">
+        <b-button @click.prevent="deletar()" variant="outline-danger">Excluir</b-button>
+        <b-button @click="hideModal" variant="outline-secondary">Cancelar</b-button>
+      </div>
+    </b-modal>
   </div>
 </template>
 <script>
 import Tabela from "@/components/users/users-tabel.vue";
 import navbar from "@/components/navbar/navbar.vue";
-
 export default {
   components: {
     Tabela,
@@ -154,12 +145,23 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
-    getUsers(users){
-      this.editable = {
-        ...users
-      }
-      this.$bvModal.show('modal-center')
+    deletar() {
+      this.$http.delete(`users/${this.editable._id}`).then((response) => {
+        console.log(response);
+        this.$bvModal.hide("modal-1");
+
+      });
     },
+    getUsers(users) {
+      this.editable = {
+        ...users,
+      };
+      this.$bvModal.show("modal-1");
+    },
+    hideModal() {
+      this.$bvModal.hide("modal-1");
+    },
+    
     // update({id}){
     //   this.$http
     //     .patch(`/users/update/${id}`, this.editusers)
@@ -177,9 +179,9 @@ export default {
     switchIcon() {
       return this.switchMode ? "light" : "dark";
     },
-    switchModal(){
+    switchModal() {
       return this.switchMode ? "dark" : "light";
-    }
+    },
   },
 };
 </script>

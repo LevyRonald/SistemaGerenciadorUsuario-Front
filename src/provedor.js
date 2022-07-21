@@ -6,16 +6,19 @@ Vue.use(Vuex)
 
 const estado = {
     token: null,
+    usuario: {},
     darkMode: false,
 
 }
 
 const mutations = {
-    DEFINIR_USUARIO_LOGADO (state, { token }){
-        state.token = token 
+    DEFINIR_USUARIO_LOGADO (state, { token, usuario }){
+        state.token = token
+        state.usuario = usuario 
     },
     DESLOGAR_USUARIO(state){
         state.token = null
+        state.usuario = {}
     },
     toggleDarkMode(state) {
         state.darkMode = !state.darkMode;
@@ -28,7 +31,8 @@ const actions = {
             http.post('/login', usuario)
                 .then(response => {
                     commit('DEFINIR_USUARIO_LOGADO', {
-                        token: response.data.access_token
+                        token: response.data.access_token,
+                        usuario: response.data.user
                       })
                       resolve(response.data)
                 })

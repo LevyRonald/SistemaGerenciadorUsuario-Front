@@ -41,7 +41,7 @@
             <b-button type="submit" class="btn-enviar">
               cadastrar
             </b-button>
-            <b-button type="reset" variant="danger">Limpar</b-button>
+            <b-button type="reset" variant="outline-danger">Limpar</b-button>
           </div>
         </b-form>
       </div>
@@ -83,6 +83,7 @@ export default {
 }
 .btn-enviar {
   background-color: #6c63ff;
+  border-color: #6c63ff;
 }
 .input.theme--dark{
   background-color: #17181a;

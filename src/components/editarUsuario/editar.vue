@@ -27,11 +27,11 @@
               v-model="userData.password"
             ></b-form-input>
           </b-form-group>
-          <div class="d-flex w-75 justify-content-between">
+          <div class="d-flex w-100 justify-content-between">
             <b-button @click="updateUser" type="button" class="btn-enviar">
             Salvar
           </b-button>
-          <b-button @click="voltar" class="d-flex align-items-center"><b-icon-arrow-left-short class="p-0 m-0"/>voltar</b-button>
+          <b-button @click="voltar" variant="outline-secondary" class="d-flex align-items-center"><b-icon-arrow-left-short class="p-0 m-0"/>voltar</b-button>
           </div>
         </b-form>
       </div>

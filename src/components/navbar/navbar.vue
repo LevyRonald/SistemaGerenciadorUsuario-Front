@@ -9,7 +9,7 @@
         </nav>
         <div class="d-flex align-items-center">
           <div>
-            <a @click="toggleDarkMode" style="cursor: pointer" v-if="switchMode" 
+            <a @click="toggleDarkMode" style="cursor: pointer" v-if="switchMode"
               ><b-icon-sun
             /></a>
             <a @click="toggleDarkMode" style="cursor: pointer" v-else
@@ -28,11 +28,11 @@
           <b-nav-item-dropdown
             toggle-class="d-flex align-items-center dropdown-user-link"
             right
-           >
+          >
             <template #button-content>
               <div class="d-sm-flex d-none user-nav">
                 <p class="user-name font-weight-bolder mb-0" v-dark-mode>
-                  {{user.name}}
+                  {{ user.name }}
                 </p>
                 <span class="user-status" v-dark-mode>Admin</span>
               </div>
@@ -45,7 +45,7 @@
                 src="https://placekitten.com/300/300"
               ></b-avatar>
             </template>
-            <b-dropdown-item >Conta</b-dropdown-item>
+            <b-dropdown-item>Conta</b-dropdown-item>
             <b-dropdown-item @click.prevent="Logout">Sair</b-dropdown-item>
           </b-nav-item-dropdown>
         </div>
@@ -54,18 +54,18 @@
   </div>
 </template>
 <script>
-import provedor from '@/provedor';
+import provedor from "@/provedor";
 export default {
-  data(){
-    return{
-      user:{
-        name: '',
-        email: ''
-      }
-    }
+  data() {
+    return {
+      user: {
+        name: "",
+        email: "",
+      },
+    };
   },
-  mounted(){
-    this.user = provedor.state.usuario
+  mounted() {
+    this.user = provedor.state.usuario;
   },
   methods: {
     Logout() {
@@ -78,10 +78,10 @@ export default {
     },
   },
   computed: {
-    switchMode(){
-      return Boolean(this.$store.state.darkMode)
-    }
-  }, 
+    switchMode() {
+      return Boolean(this.$store.state.darkMode);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -93,20 +93,20 @@ export default {
 .navbar.theme--dark {
   background-color: #313336;
 }
-.user-name.theme--dark{
+.user-name.theme--dark {
   color: rgb(255, 255, 255) !important;
 }
-.user-status.theme--dark{
+.user-status.theme--dark {
   color: rgb(255, 255, 255) !important;
 }
- .user-nav {
+.user-nav {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   float: left;
   margin-right: 4px;
 }
-.user-status {  
+.user-status {
   font-size: 12px;
 }
 </style>

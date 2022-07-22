@@ -9,7 +9,6 @@
               placeholder="Nome do usuário"
               class="input shadow-none"
               type="text"
-              required
               v-dark-mode
               v-model="usuariosCadastrados.name"
             >
@@ -20,7 +19,6 @@
               placeholder="Email do usuário"
               class="input shadow-none"
               type="email"
-              required
               v-dark-mode
               v-model="usuariosCadastrados.email"
             >
@@ -31,7 +29,6 @@
               placeholder="Senha do Usuário"
               class="input shadow-none"
               type="password"
-              required
               v-dark-mode
               v-model="usuariosCadastrados.password"
             >
@@ -66,8 +63,21 @@ export default {
         .then((response) => {
           console.log(response);
           this.$router.push({ name: "tabela" });
+          this.$swal({
+            text: "usuário cadastrado com sucesso",
+            icon: "success",
+            width: "300px",
+            timerProgressBar: true,
+            timer: 1000,
+            showConfirmButton: false, 
+          })
         })
-        .catch((erro) => console.log(erro));
+        .catch((erro) => {
+          this.$swal({
+            text: "error"
+          })
+          console.log(erro)
+          });
     },
   },
 };

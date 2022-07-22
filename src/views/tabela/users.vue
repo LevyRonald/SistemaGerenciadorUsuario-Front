@@ -149,8 +149,18 @@ export default {
       this.$http.delete(`users/${this.editable._id}`).then((response) => {
         console.log(response);
         this.$bvModal.hide("modal-1");
-
-      });
+      })
+      .then((response) => {
+        this.$swal({
+          text: "usuário deletado",
+          icon: "success",
+          width: "300px",
+          timerProgressBar: true,
+          timer: 1000,
+          showConfirmButton: false, 
+        })
+      })
+      ;
     },
     getUsers(users) {
       this.editable = {

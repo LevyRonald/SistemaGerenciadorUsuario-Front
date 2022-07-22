@@ -53,8 +53,23 @@ export default {
         .then((response) => {
           console.log(response);
           this.$router.push({ name: "tabela" });
+          this.$swal({
+            text: "usuário atualizado com sucesso",
+            icon: "success",
+            width: "300px",
+            timerProgressBar: true,
+            timer: 1500,
+            showConfirmButton: false, 
+          })
         })
-        .catch((erro) => console.log(erro));
+        .catch((erro) => {
+          this.$swal({
+            text: "faltam dados na sua requisição",
+            icon: "error",
+            width: "300px",
+          })
+          console.log(erro)
+          });
     },
     voltar(){
       this.$router.push({ name: "tabela" });

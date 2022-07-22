@@ -10,17 +10,22 @@ import { validate } from 'vee-validate'
 import VueApexCharts from 'vue-apexcharts'
 import http from '@/http'
 import "@/directives/index";
+import Toast from 'vue-toastification'
+import "vue-toastification/dist/index.css";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css"; 
 
 
 Vue.config.productionTip = false
 
 Vue.prototype.$http = http
 
+Vue.use(VueSweetalert2);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(validate)
+Vue.use(Toast)
 Vue.use(VueApexCharts)
-
 
 Vue.component('apexchart', VueApexCharts)
 

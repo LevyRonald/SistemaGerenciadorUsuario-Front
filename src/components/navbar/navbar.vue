@@ -23,7 +23,7 @@
             ><p class="navbarTest m-0" v-dark-mode>Cadastrar</p></b-nav-item
           >
           <b-nav-item to="tabela"
-            ><p class="navbarTest p-0 m-0" v-dark-mode>usuarios</p></b-nav-item
+            ><p class="navbarTest p-0 m-0" v-dark-mode>Usuarios</p></b-nav-item
           >
           <b-nav-item-dropdown
             toggle-class="d-flex align-items-center dropdown-user-link"
@@ -34,7 +34,7 @@
                 <p class="user-name font-weight-bolder mb-0" v-dark-mode>
                   {{ user.name }}
                 </p>
-                <span class="user-status" v-dark-mode>Admin</span>
+                <span class="user-status" v-dark-mode>{{user.roles}}</span>
               </div>
               <b-avatar
                 variant="light-primary"
@@ -61,6 +61,7 @@ export default {
       user: {
         name: "",
         email: "",
+        roles: ""
       },
     };
   },
@@ -81,6 +82,9 @@ export default {
     switchMode() {
       return Boolean(this.$store.state.darkMode);
     },
+    accessControl(){
+      this.user.roles ? "admin" : "user"
+    }
   },
 };
 </script>

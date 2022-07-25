@@ -11,6 +11,10 @@ const estado = {
 
 }
 
+const getters = {
+  TESTER: (state) => state.usuario.roles === 'admin'
+}
+
 const mutations = {
     DEFINIR_USUARIO_LOGADO (state, { token, usuario }){
         state.token = token
@@ -60,5 +64,6 @@ const actions = {
 export default new Vuex.Store({
     state: estado,  
     mutations,
-    actions
+    actions,
+    getters
 })

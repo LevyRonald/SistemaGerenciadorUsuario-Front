@@ -4,17 +4,19 @@ import router from './router'
 import provedor from './provedor'
 import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { validate } from 'vee-validate'
 import VueApexCharts from 'vue-apexcharts'
 import http from '@/http'
-import "@/directives/index";
 import Toast from 'vue-toastification'
-import "vue-toastification/dist/index.css";
 import VueSweetalert2 from "vue-sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css"; 
+import vSelect from "vue-select";
 
+import "sweetalert2/dist/sweetalert2.min.css";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import "@/directives/index";
+import "vue-toastification/dist/index.css";
+import "vue-select/dist/vue-select.css";
 
 Vue.config.productionTip = false
 
@@ -28,7 +30,7 @@ Vue.use(Toast)
 Vue.use(VueApexCharts)
 
 Vue.component('apexchart', VueApexCharts)
-
+Vue.component("v-select", vSelect);
 
 new Vue({
   router,

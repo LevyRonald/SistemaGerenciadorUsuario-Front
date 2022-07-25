@@ -52,7 +52,7 @@
         no-border-collapse
         show-empty
       >
-        <template #cell(actions)="{ item }">
+        <template #cell(actions)="{ item }" v-if="TESTER">
           <b-dropdown no-caret variant="flat">
             <template #button-content>
               <b-icon
@@ -61,11 +61,11 @@
                 class="align-middle"
               ></b-icon>
             </template>
-            <b-dropdown-item :to="{ path: `/home/editar/${item._id}` }">
+            <b-dropdown-item :to="{ path: `/home/editar/${item._id}` }" v-if="TESTER">
               <b-icon icon="box-arrow-up-right" scale="0.6"></b-icon>
               <label for="">Editar</label>
             </b-dropdown-item>
-            <b-dropdown-item @click="getUsers(item)">
+            <b-dropdown-item @click="getUsers(item)" v-if="TESTER">
               <b-icon icon="trash" scale="0.6"></b-icon>
               <label for="">Excluir</label>
             </b-dropdown-item>
@@ -95,6 +95,7 @@
 <script>
 import Tabela from "@/components/users/users-tabel.vue";
 import navbar from "@/components/navbar/navbar.vue";
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Tabela,
@@ -126,6 +127,10 @@ export default {
         {
           key: "email",
           label: "Email",
+        },
+        {
+          key: "roles",
+          label: "Cargo",
         },
         {
           key: "actions",
@@ -171,18 +176,9 @@ export default {
     hideModal() {
       this.$bvModal.hide("modal-1");
     },
-    
-    // update({id}){
-    //   this.$http
-    //     .patch(`/users/update/${id}`, this.editusers)
-    //     .then((response) => {
-    //       console.log(response);
-    //       this.$router.push({ name: "tabela" });
-    //     })
-    //     .catch((erro) => console.log(erro));
-    // },
   },
   computed: {
+    ...mapGetters(["TESTER"]),
     switchMode() {
       return Boolean(this.$store.state.darkMode);
     },

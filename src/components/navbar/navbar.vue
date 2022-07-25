@@ -19,7 +19,7 @@
           <b-nav-item to="inicio"
             ><p class="navbarTest m-0" v-dark-mode>Home</p></b-nav-item
           >
-          <b-nav-item to="/home/cadastro"
+          <b-nav-item to="/home/cadastro" v-if="TESTER"
             ><p class="navbarTest m-0" v-dark-mode>Cadastrar</p></b-nav-item
           >
           <b-nav-item to="tabela"
@@ -55,7 +55,9 @@
 </template>
 <script>
 import provedor from "@/provedor";
+import { mapGetters } from 'vuex';
 export default {
+  
   data() {
     return {
       user: {
@@ -74,17 +76,14 @@ export default {
       this.$router.push({ name: "login" });
     },
     toggleDarkMode: function () {
-      //chamada do metodo no toggleDarkMode criado no Vuex
       this.$store.commit({ type: "toggleDarkMode" });
     },
   },
   computed: {
+    ...mapGetters(["TESTER"]),
     switchMode() {
       return Boolean(this.$store.state.darkMode);
     },
-    accessControl(){
-      this.user.roles ? "admin" : "user"
-    }
   },
 };
 </script>

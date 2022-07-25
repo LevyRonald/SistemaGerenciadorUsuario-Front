@@ -27,6 +27,15 @@
               v-model="userData.password"
             ></b-form-input>
           </b-form-group>
+          <b-form-group label="Cargo" label-for="Cargo" class="mb-3 textos">
+              <b-form-select
+              placeholder="adicione um cargo de usuário"
+              class="inputSelect shadow-none"
+              v-dark-mode
+              v-model="userData.roles"
+              :options="option"
+              ></b-form-select>
+            </b-form-group>
           <div class="d-flex w-100 justify-content-between">
             <b-button @click="updateUser" type="button" class="btn-enviar">
             Salvar
@@ -45,6 +54,14 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data(){
+    return{
+      option: [
+        { value: "admin", text: "admin" },
+        { value: "user", text: "usuario" }
+      ]
+    }
   },
   methods: {
     updateUser() {
@@ -94,5 +111,15 @@ export default {
   background-color: #17181a;
   color: white;
   border-color: #4a4d53;
+}
+.inputSelect{
+  height: 5vh;
+  width: 100%;
+  border-radius: 5px;
+}
+.inputSelect.theme--dark{
+  background-color: #17181a;
+  color: white;
+  box-shadow: none;
 }
 </style>

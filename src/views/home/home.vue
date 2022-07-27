@@ -9,6 +9,7 @@
 <script>
 import { SocketModule } from "@/socket/socketServer";
 import navbar from "@/components/navbar/navbar.vue";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -18,11 +19,23 @@ export default {
   components: {
     navbar,
   },
+  computed: {
+    ...mapGetters(["EMAILUSER"]),
+  },
   async mounted() {
+    const sessionUser = localStorage.getItem("email");
+    console.log(sessionUser)
     await this.SocketService.registerListener(
       "is-logged",
       "is-logged",
-      (UserEmail = this.email) => {
+      (data) => {
+        if (sessionUser === this.EMAILUSER) {
+           this.$store.commit("DESLOGAR_USUARIO");
+          this.$router.push({ name: "login" });
+          this.$swal({
+            text: "usuario ja logado",
+          });
+        }
         this.$swal({
           position: "top-start",
           text: "Um usuário fez login",

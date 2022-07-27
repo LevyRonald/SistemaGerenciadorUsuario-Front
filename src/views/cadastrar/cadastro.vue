@@ -89,9 +89,26 @@ export default {
           })
         })
         .catch((erro) => {
-          this.$swal({
-            text: "error"
+          if (erro.request.status === 500) {
+            this.$swal({
+              icon: "error",
+              text: "email ja cadastrado",
+              width: "300px",
+              timerProgressBar: true,
+              timer: 1000,
+              showConfirmButton: false, 
           })
+          }
+          if (erro.request.status === 400) {
+            this.$swal({
+              icon: "error",
+              text: "faltam dados na sua requisição",
+              width: "300px",
+              timerProgressBar: true,
+              timer: 1000,
+              showConfirmButton: false, 
+          })
+          }
           console.log(erro)
           });
     },

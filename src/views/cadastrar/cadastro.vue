@@ -55,6 +55,7 @@
   </b-card>
 </template>
 <script>
+import {SocketModule} from '@/socket/socketServer'
 export default {
   data() {
     return {
@@ -67,7 +68,8 @@ export default {
       option: [
         { value: "admin", text: "admin" },
         { value: "user", text: "usuario" }
-      ]
+      ],
+      SocketService: SocketModule.connect()
     };
   },
   methods: {

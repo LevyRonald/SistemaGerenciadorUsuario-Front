@@ -30,6 +30,7 @@ export default {
       "is-logged",
       (data) => {
         if (sessionUser === this.EMAILUSER) {
+          localStorage.clear()
            this.$store.commit("DESLOGAR_USUARIO");
           this.$router.push({ name: "login" });
           this.$swal({

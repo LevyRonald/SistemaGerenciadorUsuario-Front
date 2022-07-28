@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import http from '@/http'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ const estado = {
 }
 
 const getters = {
-  TESTER: (state) => state.usuario.roles === 'admin'
+  TESTER: (state) => state.usuario.roles === 'admin',
+  EMAILUSER: (state) => state.usuario.email
 }
 
 const mutations = {
@@ -65,5 +67,6 @@ export default new Vuex.Store({
     state: estado,  
     mutations,
     actions,
-    getters
+    getters,
+    plugins: [createPersistedState()],
 })

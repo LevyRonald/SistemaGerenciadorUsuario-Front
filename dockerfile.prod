@@ -1,0 +1,28 @@
+FROM tallos/nodejs:14.16.3 as build
+
+WORKDIR /user/app-front/app
+
+COPY package.*json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+FROM tallos/nodejs:14.16.3
+
+LABEL maintaner="front-desafio"
+
+WORKDIR /user/app-front/app
+
+COPY --from=build /user/app-front/app/dist ./dist
+COPY --from=build /user/app-front/app/node_modules ./node_modules
+
+RUN npm install -g serve
+
+USER node
+
+EXPOSE 8092
+
+ENTRYPOINT [ "serve", "-s", "dist", "-l", "8092" ]

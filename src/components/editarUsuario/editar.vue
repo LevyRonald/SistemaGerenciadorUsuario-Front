@@ -28,19 +28,24 @@
             ></b-form-input>
           </b-form-group>
           <b-form-group label="Cargo" label-for="Cargo" class="mb-3 textos">
-              <b-form-select
+            <b-form-select
               placeholder="adicione um cargo de usuário"
               class="inputSelect shadow-none"
               v-dark-mode
               v-model="userData.roles"
               :options="option"
-              ></b-form-select>
-            </b-form-group>
+            ></b-form-select>
+          </b-form-group>
           <div class="d-flex w-100 justify-content-between">
             <b-button @click="updateUser" type="button" class="btn-enviar">
-            Salvar
-          </b-button>
-          <b-button @click="voltar" variant="outline-secondary" class="d-flex align-items-center"><b-icon-arrow-left-short class="p-0 m-0"/>voltar</b-button>
+              Salvar
+            </b-button>
+            <b-button
+              @click="voltar"
+              variant="outline-secondary"
+              class="d-flex align-items-center"
+              ><b-icon-arrow-left-short class="p-0 m-0" />voltar</b-button
+            >
           </div>
         </b-form>
       </div>
@@ -55,13 +60,13 @@ export default {
       required: true,
     },
   },
-  data(){
-    return{
+  data() {
+    return {
       option: [
         { value: "admin", text: "admin" },
-        { value: "user", text: "usuario" }
-      ]
-    }
+        { value: "user", text: "usuario" },
+      ],
+    };
   },
   methods: {
     updateUser() {
@@ -76,21 +81,21 @@ export default {
             width: "300px",
             timerProgressBar: true,
             timer: 1500,
-            showConfirmButton: false, 
-          })
+            showConfirmButton: false,
+          });
         })
         .catch((erro) => {
           this.$swal({
             text: "faltam dados na sua requisição",
             icon: "error",
             width: "300px",
-          })
-          console.log(erro)
           });
+          console.log(erro);
+        });
     },
-    voltar(){
+    voltar() {
       this.$router.push({ name: "tabela" });
-    }
+    },
   },
 };
 </script>
@@ -100,7 +105,7 @@ export default {
   border-radius: 20px;
   padding: 20px;
 }
-.cardPrin.theme--dark{
+.cardPrin.theme--dark {
   background-color: #313336;
 }
 .btn-enviar {
@@ -112,12 +117,12 @@ export default {
   color: white;
   border-color: #4a4d53;
 }
-.inputSelect{
+.inputSelect {
   height: 5vh;
   width: 100%;
   border-radius: 5px;
 }
-.inputSelect.theme--dark{
+.inputSelect.theme--dark {
   background-color: #17181a;
   color: white;
   box-shadow: none;

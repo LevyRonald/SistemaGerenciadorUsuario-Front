@@ -70,6 +70,7 @@ export default {
                 width: "200px",
               });
             }, 400);
+            localStorage.setItem('email', this.usuario.email)
         })
         .catch((error) => {
           this.$swal({

@@ -14,14 +14,17 @@
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
     "save": "^2.5.0",
+    "socket.io-client": "^4.5.1",
     "vee-validate": "^4.6.1",
     "vue": "^2.6.14",
     "vue-apexcharts": "^1.6.2",
     "vue-router": "^3.5.1",
     "vue-select": "^3.20.0",
+    "vue-socket.io": "^3.0.10",
     "vue-sweetalert2": "^5.0.5",
     "vue-toastification": "^1.7.14",
-    "vuex": "^3.3.0"
+    "vuex": "^3.3.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

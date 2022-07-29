@@ -237,7 +237,6 @@ export default {
 .cardprin.theme--dark {
   background-color: #313336;
 }
-
 .input.theme--dark {
   background-color: #17181a;
   color: white;

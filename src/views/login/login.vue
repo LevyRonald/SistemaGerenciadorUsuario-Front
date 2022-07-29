@@ -96,46 +96,47 @@ export default {
   box-sizing: border-box;
   text-decoration: none;
 }
-
 .row-login {
   margin-left: 0;
 }
-
 .left-login {
   background-color: #cad5ca;
 }
-
 .left-login.theme--dark {
   background-color: #313336;
 }
-
 .title-login {
   font-weight: bold;
 }
-
 .img-login {
   width: 600px;
   height: 600px;
 }
-
 .input {
   border-radius: 10px;
   padding: 3px;
   background-color: #f2f2f2;
   border-color: #6c63ff;
 }
-
 .btn-enviar {
   background-color: #6c63ff;
 }
-
 .textos {
   text-align: left;
 }
-
 .input.theme--dark {
   background-color: #17181a;
   color: white;
   border-color: #4a4d53;
+}
+@media screen and (max-width: 800px){
+  .left-login{
+    width: 100vw;
+    height: 100vh;
+  }
+  .coluna-imagem .img-login{
+    width: 0;
+    height: 0;
+  }
 }
 </style>

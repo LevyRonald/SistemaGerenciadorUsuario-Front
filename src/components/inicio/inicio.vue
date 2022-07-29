@@ -3,7 +3,7 @@
     <label for="">ADMIN - taxa de crescimento</label>
     <div>
       <apexchart
-        width="600"
+      class="apex-style"
         type="line"
         :options="chartOptions"
         :series="series"
@@ -38,5 +38,16 @@ export default {
 <style scoped>
 .shadow.theme--dark{
   background-color: #313336;
+}
+.apex-style{
+  width: 600px;
+}
+@media screen and (max-width: 800px){
+  .apex-style{
+    width: 100%;
+  }
+  .shadow{
+    width: 100%;
+  }
 }
 </style>

@@ -76,7 +76,7 @@ export default {
           console.log(response);
           this.$router.push({ name: "tabela" });
           this.$swal({
-            text: "usuário atualizado com sucesso",
+            text: `usuário ${this.userData.name} atualizado com sucesso`,
             icon: "success",
             width: "300px",
             timerProgressBar: true,

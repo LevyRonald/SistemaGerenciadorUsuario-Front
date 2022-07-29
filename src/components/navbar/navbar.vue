@@ -4,7 +4,7 @@
       <b-navbar-nav class="d-flex justify-content-between w-100">
         <nav class="d-flex align-items-center p-0">
           <b-nav-item to="inicio"
-            ><p class="navbarTest m-0" v-dark-mode>ADMIN</p></b-nav-item
+            ><p class="navbarTest m-0" v-dark-mode><img src="../../assets/navbarImage.png" class="imgnav"></p></b-nav-item
           >
         </nav>
         <div class="d-flex align-items-center">
@@ -88,6 +88,9 @@ export default {
 };
 </script>
 <style scoped>
+.imgnav{
+  height: 50px;
+}
 .navbarTest.theme--dark {
   color: rgb(255, 255, 255) !important;
   padding: 0;

@@ -200,7 +200,7 @@ export default {
         })
         .then((response) => {
           this.$swal({
-            text: "usuário deletado",
+            text: `usuário ${this.editable.name} deletado`,
             icon: "success",
             width: "300px",
             timerProgressBar: true,

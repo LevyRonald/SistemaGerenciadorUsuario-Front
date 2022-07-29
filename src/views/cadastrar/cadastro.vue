@@ -80,7 +80,7 @@ export default {
           console.log(response);
           this.$router.push({ name: "tabela" });
           this.$swal({
-            text: "usuário cadastrado com sucesso",
+            text: `${this.usuariosCadastrados.name} cadastrado com sucesso`,
             icon: "success",
             width: "300px",
             timerProgressBar: true,
@@ -92,11 +92,8 @@ export default {
           if (erro.request.status === 500) {
             this.$swal({
               icon: "error",
-              text: "email ja cadastrado",
+              text: `Endereço de email ${this.usuariosCadastrados.email} ja cadastrado`,
               width: "300px",
-              timerProgressBar: true,
-              timer: 1000,
-              showConfirmButton: false, 
           })
           }
           if (erro.request.status === 400) {

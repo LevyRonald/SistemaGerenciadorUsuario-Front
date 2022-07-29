@@ -28,6 +28,7 @@
           <b-nav-item-dropdown
             toggle-class="d-flex align-items-center dropdown-user-link"
             right
+            no-caret
           >
             <template #button-content>
               <div class="d-sm-flex d-none user-nav">

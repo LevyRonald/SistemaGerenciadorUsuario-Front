@@ -143,4 +143,9 @@ export default {
   color: white;
   box-shadow: none;
 }
+@media screen and (max-width: 800px){
+  .cardPrin{
+    width: 100%;
+  }
+}
 </style>

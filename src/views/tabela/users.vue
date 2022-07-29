@@ -2,41 +2,24 @@
   <div class="container">
     <b-card no-body class="mb-2 cardprin shadow" v-dark-mode>
       <div class="m-2">
-        <b-row>
-          <b-col
-            cols="12"
-            md="6"
-            class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
-          >
-            <div class="d-flex flex-column">
-              <div class="d-flex align-items-center">
-                <b-icon icon="people-fill" aria-hidden="true"></b-icon>
-                <strong>Usuários</strong>
-              </div>
+        <div
+          class=" d-flex align-items-center justify-content-between w-100"
+        >
+          <div class="d-flex flex-column">
+            <div class="d-flex align-items-center">
+              <b-icon icon="people-fill" aria-hidden="true"></b-icon>
+              <strong>Usuários</strong>
             </div>
-          </b-col>
-          <b-col cols="12" md="6">
-            <div
-              class="
-                d-flex
-                align-items-center
-                justify-content-end
-                pt-3
-                pesquisar
-              "
-            >
-              <b-form-input
-                v-model="filter"
-                class="d-inline-block mr-1 h-75 w-50 input"
-                placeholder="Pesquisar..."
-                v-dark-mode
-              />
-            </div>
-          </b-col>
-        </b-row>
-      </div>
-      <div class="row">
-        <Tabela v-for="user in users" :key="user.numero" :user="user" />
+          </div>
+          <div class="pesquisar">
+            <b-form-input
+              v-model="filter"
+              class="input"
+              placeholder="Pesquisar..."
+              v-dark-mode
+            />
+          </div>
+        </div>
       </div>
       <b-table
         striped
@@ -100,13 +83,11 @@
   </div>
 </template>
 <script>
-import Tabela from "@/components/users/users-tabel.vue";
 import navbar from "@/components/navbar/navbar.vue";
 import { SocketModule } from "@/socket/socketServer";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    Tabela,
     navbar,
   },
   data() {
@@ -168,7 +149,7 @@ export default {
             timer: 1000,
             showConfirmButton: false,
           })
-        ),
+        )
     );
     await this.SocketService.registerListener(
       "update",
@@ -185,7 +166,7 @@ export default {
             timer: 3000,
             showConfirmButton: false,
           })
-        ),
+        )
     );
     await this.SocketService.registerListener(
       "removed-user",
@@ -202,7 +183,7 @@ export default {
             timer: 3000,
             showConfirmButton: false,
           })
-        ),
+        )
     );
   },
   methods: {

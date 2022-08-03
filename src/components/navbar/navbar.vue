@@ -80,10 +80,10 @@
           >
           <b-dropdown-divider class="elements-none"></b-dropdown-divider>
           <b-nav-item class="elements-none" :to="{ path: `/home/editar/${user._id}` }"
-            ><p class="m-0" v-dark-mode>Conta</p></b-nav-item
+            ><p class="navbarTest m-0" v-dark-mode>Conta</p></b-nav-item
           >
           <b-nav-item class="elements-none" @click.prevent="Logout"
-            ><p class="m-0" v-dark-mode>Sair</p></b-nav-item
+            ><p class="navbarTest m-0" v-dark-mode>Sair</p></b-nav-item
           >
         </b-navbar-nav>
       </b-collapse>

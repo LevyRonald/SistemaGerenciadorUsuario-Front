@@ -9,6 +9,7 @@
               class="input shadow-none"
               v-dark-mode
               v-model="userData.name"
+              :disabled="TESTER == 0"
             ></b-form-input>
           </b-form-group>
           <b-form-group label="Email" label-for="Email" class="mb-2">
@@ -17,6 +18,7 @@
               type="email"
               v-dark-mode
               v-model="userData.email"
+              :disabled="TESTER == 0"
             ></b-form-input>
           </b-form-group>
           <b-form-group label="Senha" label-for="Senha" class="mb-2">
@@ -25,6 +27,7 @@
               type="password"
               v-dark-mode
               v-model="userData.password"
+              :disabled="TESTER == 0"
             ></b-form-input>
           </b-form-group>
           <b-form-group label="Cargo" label-for="Cargo" class="mb-3 textos">
@@ -34,10 +37,11 @@
               v-dark-mode
               v-model="userData.roles"
               :options="option"
+              :disabled="TESTER == 0"
             ></b-form-select>
           </b-form-group>
           <div class="d-flex w-100 justify-content-between">
-            <b-button @click="updateUser" type="button" class="btn-enviar">
+            <b-button @click="updateUser" type="button" class="btn-enviar" :disabled="TESTER == 0">
               Salvar
             </b-button>
             <b-button
@@ -53,6 +57,7 @@
   </b-card>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     userData: {
@@ -67,6 +72,9 @@ export default {
         { value: "user", text: "usuario" },
       ],
     };
+  },
+  computed: {
+    ...mapGetters(["TESTER"]),
   },
   methods: {
     updateUser() {

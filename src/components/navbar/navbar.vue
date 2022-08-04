@@ -24,7 +24,12 @@
             <a @click="toggleDarkMode" class="" style="cursor: pointer" v-else
               ><b-icon-moon /></a
           ></div>
-      <b-navbar-toggle :class="burgerToggle" target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse">
+        <template #default="{ expanded }">
+        <b-icon v-if="expanded" :style="burgerToggle" icon="chevron-bar-up"></b-icon>
+        <b-icon v-else :style="burgerToggle"  icon="chevron-bar-down"></b-icon>
+      </template>
+      </b-navbar-toggle>
       </div>
 
       <b-collapse class="flex-row-reverse" id="nav-collapse" is-nav>
@@ -176,7 +181,7 @@ export default {
       return Boolean(this.$store.state.darkMode);
     },
     burgerToggle(){
-      return this.switchMode ? "navbar-dark" : "navbar-light";
+      return this.switchMode ? "color: #fff" : "color: #000";
     }
   },
 };

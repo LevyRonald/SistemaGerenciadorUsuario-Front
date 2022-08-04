@@ -34,6 +34,7 @@
         sticky-header="460px"
         no-border-collapse
         show-empty
+        empty-filtered-text="nenhum usuário encontrado"
       >
       <template #cell(name)="data">
         <span class="text-capitalize">{{data.item.name}}</span>
@@ -278,5 +279,10 @@ export default {
 }
 .IconRole{
   margin-right: 10px;
+}
+@media screen and (max-width: 800px) {
+  .container{
+    width: 100%;
+  }
 }
 </style>

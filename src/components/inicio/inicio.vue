@@ -2,7 +2,7 @@
   <b-row class="principal">
     <b-col class="pb-3">
       <b-card class="shadow" v-dark-mode>
-        <label for="">ADMIN - taxa de crescimento</label>
+        <label for="">SGF - taxa de crescimento</label>
         <apexchart
           class="apex-style"
           type="line"
@@ -14,7 +14,7 @@
     </b-col>
     <b-col>
       <b-card class="shadow" v-dark-mode>
-        <label for="">ADMIN - taxa de usuários</label>
+        <label for="">SGF - taxa de usuários</label>
         <apexchart
           class="apex-style"
           type="donut"
@@ -47,25 +47,12 @@ export default {
         ],
       },
       Donut: {
-        series: [44, 55],
+        series: [10, 25, 20, 10],
         chartOptions: {
           chart: {
             type: "donut",
           },
-          labels: ["admin", "usuário"],
-          // responsive: [
-          //   {
-          //     breakpoint: 480,
-          //     options: {
-          //       chart: {
-          //         width: 200,
-          //       },
-          //       legend: {
-          //         position: "bottom",
-          //       },
-          //     },
-          //   },
-          // ],
+          labels: ["usuário", "vendedor", "suporte", "admin"],
         },
       },
     };

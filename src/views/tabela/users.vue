@@ -35,6 +35,9 @@
         no-border-collapse
         show-empty
       >
+      <template #cell(name)="data">
+        <span class="text-capitalize">{{data.item.name}}</span>
+      </template>
         <template #cell(actions)="{ item }" v-if="TESTER">
           <b-dropdown no-caret variant="flat">
             <template #button-content>

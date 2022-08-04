@@ -57,6 +57,17 @@
             </b-dropdown-item>
           </b-dropdown>
         </template>
+        <template #cell(roles)="data">
+          <div class="d-flex align-items-center">
+            <b-icon
+              :icon="UserRole(data.item.roles)"
+              size="18"
+              class="IconRole"
+              :class="`text-${UserRoleVariant(data.item.roles)}`"
+            />
+            <span class="align-text-center text-capitalize">{{ data.item.roles }}</span>
+          </div>
+        </template>
       </b-table>
     </b-card>
     <b-modal
@@ -91,7 +102,23 @@ export default {
     navbar,
   },
   data() {
+    const UserRoleVariant = roles => {
+      const items = {
+        'admin': 'danger',
+        'user': 'info'
+      }
+      return items[roles]
+    }
+    const UserRole = roles => {
+      const items = {
+        'admin': 'hdd-stack-fill',
+        'user': 'people-fill',
+      }
+      return items[roles]
+    }
     return {
+      UserRoleVariant,
+      UserRole,
       stickyHeader: true,
       noCollapse: false,
       users: [],
@@ -121,6 +148,8 @@ export default {
         {
           key: "roles",
           label: "Cargo",
+          thClass: 'align-center',
+          tdClass: 'align-center',
         },
         {
           key: "actions",
@@ -241,5 +270,8 @@ export default {
   background-color: #17181a;
   color: white;
   border-color: #4a4d53;
+}
+.IconRole{
+  margin-right: 10px;
 }
 </style>

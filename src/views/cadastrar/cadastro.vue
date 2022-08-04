@@ -63,11 +63,14 @@ export default {
         name: "",
         email: "",
         password: "",
-        roles: ""
+        roles: null
       },
       option: [
+        { value: null, text: "selecione uma opção", disabled: true },
         { value: "admin", text: "admin" },
-        { value: "user", text: "usuario" }
+        { value: "usuario", text: "usuario" },
+        { value: "vendedor", text: "vendedor"},
+        { value: "suporte", text: "suporte"}
       ],
       SocketService: SocketModule.connect()
     };

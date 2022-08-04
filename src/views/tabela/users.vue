@@ -108,14 +108,18 @@ export default {
     const UserRoleVariant = roles => {
       const items = {
         'admin': 'danger',
-        'user': 'info'
+        'usuario': 'info',
+        'vendedor': 'success',
+        'suporte': 'warning'
       }
       return items[roles]
     }
     const UserRole = roles => {
       const items = {
-        'admin': 'hdd-stack-fill',
-        'user': 'people-fill',
+        'admin': 'hdd-stack',
+        'usuario': 'people',
+        'vendedor': 'currency-dollar',
+        'suporte': 'headset'
       }
       return items[roles]
     }
@@ -151,8 +155,6 @@ export default {
         {
           key: "roles",
           label: "Cargo",
-          thClass: 'align-center',
-          tdClass: 'align-center',
         },
         {
           key: "actions",

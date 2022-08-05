@@ -30,9 +30,11 @@
             >
             </b-form-input>
           </b-form-group>
-          <b-button type="submit" class="w-100 btn-enviar">
+          <div class=" pt-4 w-100 d-flex justify-content-center">
+          <b-button type="submit" class="w-75 btn-enviar">
             <b-icon-door-open />Entrar
           </b-button>
+          </div>
         </b-form>
       </div>
     </b-col>
@@ -118,7 +120,11 @@ export default {
   background-color: #f2f2f2;
   border-color: #6c63ff;
 }
+.div-btn{
+  width: 100%;
+}
 .btn-enviar {
+  height: 35px;
   background-color: #6c63ff;
 }
 .textos {

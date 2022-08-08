@@ -69,8 +69,6 @@
   </b-row>
 </template>
 <script>
-import { password } from "@/validations/validation.js";
-
 export default {
   data() {
     return {

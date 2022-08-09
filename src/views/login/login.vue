@@ -69,9 +69,11 @@
   </b-row>
 </template>
 <script>
+import password from '@/validations/validation'
 export default {
   data() {
     return {
+      password,
       usuario: {
         email: "",
         password: "",

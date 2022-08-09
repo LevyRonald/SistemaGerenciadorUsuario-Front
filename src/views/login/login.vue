@@ -7,33 +7,57 @@
     >
       <div class="col-8 coluna-login">
         <h2 class="text-center mb-5 title-login">Login</h2>
-        <b-form @submit.prevent="enviar">
-          <b-form-group label="Email" label-for="Email" class="mb-2 textos">
-            <b-form-input
-              placeholder="Digite seu Email"
-              class="input shadow-none"
-              type="email"
-              v-dark-mode
-              required
-              v-model="usuario.email"
+        <validation-observer ref="observer">
+          <b-form @submit.prevent="enviar">
+            <validation-provider
+              name="email"
+              rules="required"
+              #default="{ errors }"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-form-group label="Senha" label-for="Senha" class="mb-3 textos">
-            <b-form-input
-              placeholder="Digite sua Senha"
-              class="input shadow-none"
-              type="password"
-              required
-              v-dark-mode
-              v-model="usuario.password"
+              <b-form-group label="Email" label-for="Email" class="mb-2 textos">
+                <b-form-input
+                  placeholder="Digite seu Email"
+                  class="input shadow-none"
+                  type="email"
+                  aria-describedby="input-email-live-feedback"
+                  v-dark-mode
+                  required
+                  :state="errors.length > 0 ? false : null"
+                  v-model="usuario.email"
+                >
+                </b-form-input>
+                <small class="text-danger">{{ errors[0] }}</small>
+              </b-form-group>
+            </validation-provider>
+
+            <validation-provider
+              name="senha"
+              vid="Password"
+              rules="required|password"
+              #default="{ errors }"
             >
-            </b-form-input>
-          </b-form-group>
-          <b-button type="submit" class="w-100 btn-enviar">
-            <b-icon-door-open />Entrar
-          </b-button>
-        </b-form>
+              <b-form-group label="Senha" label-for="Senha" class="mb-3 textos">
+                <b-form-input
+                  placeholder="Digite sua Senha"
+                  class="input shadow-none"
+                  type="password"
+                  aria-describedby="input-2-live-feedback"
+                  required
+                  v-dark-mode
+                  :state="errors.length > 0 ? false : null"
+                  v-model="usuario.password"
+                >
+                </b-form-input>
+                <small class="text-danger">{{ errors[0] }}</small>
+              </b-form-group>
+            </validation-provider>
+            <div class="pt-4 w-100 d-flex justify-content-center">
+              <b-button type="submit" class="w-75 btn-enviar">
+                <b-icon-door-open />Entrar
+              </b-button>
+            </div>
+          </b-form>
+        </validation-observer>
       </div>
     </b-col>
     <b-col
@@ -70,7 +94,7 @@ export default {
                 width: "200px",
               });
             }, 400);
-            localStorage.setItem('email', this.usuario.email)
+          localStorage.setItem("email", this.usuario.email);
         })
         .catch((error) => {
           this.$swal({
@@ -118,7 +142,11 @@ export default {
   background-color: #f2f2f2;
   border-color: #6c63ff;
 }
+.div-btn {
+  width: 100%;
+}
 .btn-enviar {
+  height: 35px;
   background-color: #6c63ff;
 }
 .textos {
@@ -129,12 +157,12 @@ export default {
   color: white;
   border-color: #4a4d53;
 }
-@media screen and (max-width: 800px){
-  .left-login{
+@media screen and (max-width: 800px) {
+  .left-login {
     width: 100vw;
     height: 100vh;
   }
-  .coluna-imagem .img-login{
+  .coluna-imagem .img-login {
     width: 0;
     height: 0;
   }

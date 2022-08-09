@@ -34,7 +34,11 @@
         sticky-header="460px"
         no-border-collapse
         show-empty
+        empty-filtered-text="nenhum usuário encontrado"
       >
+      <template #cell(name)="data">
+        <span class="text-capitalize">{{data.item.name}}</span>
+      </template>
         <template #cell(actions)="{ item }" v-if="TESTER">
           <b-dropdown no-caret variant="flat">
             <template #button-content>
@@ -56,6 +60,17 @@
               <label for="">Excluir</label>
             </b-dropdown-item>
           </b-dropdown>
+        </template>
+        <template #cell(roles)="data">
+          <div class="d-flex align-items-center">
+            <b-icon
+              :icon="UserRole(data.item.roles)"
+              size="18"
+              class="IconRole"
+              :class="`text-${UserRoleVariant(data.item.roles)}`"
+            />
+            <span class="align-text-center text-capitalize">{{ data.item.roles }}</span>
+          </div>
         </template>
       </b-table>
     </b-card>
@@ -91,7 +106,27 @@ export default {
     navbar,
   },
   data() {
+    const UserRoleVariant = roles => {
+      const items = {
+        'admin': 'danger',
+        'usuario': 'info',
+        'vendedor': 'success',
+        'suporte': 'warning'
+      }
+      return items[roles]
+    }
+    const UserRole = roles => {
+      const items = {
+        'admin': 'hdd-stack',
+        'usuario': 'people',
+        'vendedor': 'currency-dollar',
+        'suporte': 'headset'
+      }
+      return items[roles]
+    }
     return {
+      UserRoleVariant,
+      UserRole,
       stickyHeader: true,
       noCollapse: false,
       users: [],
@@ -241,5 +276,13 @@ export default {
   background-color: #17181a;
   color: white;
   border-color: #4a4d53;
+}
+.IconRole{
+  margin-right: 10px;
+}
+@media screen and (max-width: 800px) {
+  .container{
+    width: 100%;
+  }
 }
 </style>
